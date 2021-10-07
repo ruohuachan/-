@@ -1,0 +1,62 @@
+import os
+import time
+p=input("请输入姓名")
+if len(p)==3:
+    while(1):
+        if os.path.exists(r"C:\Users\魏艳君\Desktop\阴立暄学习资料\点名器\点名器V1.0\checkroll\副本2006.txt"):
+            with open("C:/Users/魏艳君/Desktop/阴立暄学习资料/点名器/点名器V1.0/checkroll/副本2006.txt", "r", encoding="ansi") as f:
+                lines=f.readlines()
+                c=0
+                for line in lines:
+                     c=c+1
+                z=[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
+                x=-1
+                for i in range(c):
+                    position = f.seek(i * 25 + 9, 0)
+                    a = f.read(3)
+                    if p == a :
+                        x=x+1
+                        z[x]=i
+                for i in range(c):
+                    position = f.seek(i * 25 + 7, 0)
+                    a = f.read(3)
+                    if p == a :
+                        x=x+1
+                        z[x]=i
+            with open("C:/Users/魏艳君/Desktop/阴立暄学习资料/点名器/点名器V1.0/checkroll/副本2006.txt", "w", encoding="ansi") as f_w:
+                for i in range(c):
+                    if i in z:
+                        continue
+                    f_w.write(lines[i])
+            break
+        time.sleep(10)
+if len(p)==2:
+    while(1):
+        if os.path.exists(r"C:\Users\魏艳君\Desktop\阴立暄学习资料\点名器\点名器V1.0\checkroll\副本2006.txt"):
+            with open("C:/Users/魏艳君/Desktop/阴立暄学习资料/点名器/点名器V1.0/checkroll/副本2006.txt", "r", encoding="ansi") as f:
+                lines=f.readlines()
+                c=0
+                for line in lines:
+                     c=c+1
+                z=[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
+                x=-1
+                for i in range(c):
+                    position = f.seek(i * 25 + 9, 0)
+                    a = f.read(2)
+                    if p == a :
+                        x=x+1
+                        z[x]=i
+                for i in range(c):
+                    position = f.seek(i * 25 + 7, 0)
+                    a = f.read(2)
+                    if p == a :
+                        x=x+1
+                        z[x]=i
+            with open("C:/Users/魏艳君/Desktop/阴立暄学习资料/点名器/点名器V1.0/checkroll/副本2006.txt", "w", encoding="ansi") as f_w:
+                for i in range(c):
+                    if i in z:
+                        continue
+                    f_w.write(lines[i])
+            break
+        time.sleep(10)
+#本程序必须知道老师U盘中的路径
